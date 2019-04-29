@@ -1,6 +1,6 @@
 <?php
 
-namespace NiceCrypto\Tests\Structure;
+namespace NiceCrypto\Tests\Certificate\Pem;
 
 
 use NiceCrypto\Certificate\GenerateOptions;

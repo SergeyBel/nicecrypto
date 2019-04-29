@@ -1,7 +1,8 @@
 {
     "autoload": {
         "psr-4": {
-		"NiceCrypto\\": "./src"
+		"NiceCrypto\\": "./src",
+		"NiceCrypto\\Tests\\": "./tests"
 		}
     },
 

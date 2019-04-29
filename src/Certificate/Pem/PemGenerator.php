@@ -31,7 +31,8 @@ class PemGenerator
 
     public function generatePublicKey(PrivateKey $privateKey): PublicKey
     {
-
+        $privateKeyData = openssl_pkey_get_details($privateKey->getResource());
+        return new PublicKey($privateKeyData['key']);
     }
 
 }
