@@ -1,6 +1,6 @@
 <?php
 
-namespace NiceCrypto\Certificate\Generator;
+namespace NiceCrypto\Certificate;
 
 class GenerateOptions
 {
@@ -18,11 +18,29 @@ class GenerateOptions
         return $this->data;
     }
 
-    private function addElement(string $name, string $value)
+    private function addElement(string $name, $value)
     {
         if ($value !== null) {
             $this->data[$name] = $value;
         }
+    }
+
+    public function setDigestAlgo(string $digestAlgo)
+    {
+        $this->digestAlgo = $digestAlgo;
+        return $this;
+    }
+
+    public function setBits(int $bits)
+    {
+        $this->bits = $bits;
+        return $this;
+    }
+
+    public function setType(int $type)
+    {
+        $this->type = $type;
+        return $this;
     }
 }
 

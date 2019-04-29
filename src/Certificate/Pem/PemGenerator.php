@@ -2,7 +2,7 @@
 
 namespace NiceCrypto\Certificate\Pem;
 
-use NiceCrypto\Certificate\Generator\GenerateOptions;
+use NiceCrypto\Certificate\GenerateOptions;
 use NiceCrypto\Exception\GenerateException;
 
 class PemGenerator

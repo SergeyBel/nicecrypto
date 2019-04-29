@@ -2,15 +2,52 @@
 
 namespace NiceCrypto\Certificate\Pem;
 
-class PrivateKey
+use NiceCrypto\Certificate\KeyInterface;
+use NiceCrypto\Exception\PemException;
+
+class PrivateKey implements KeyInterface
 {
     private $resource;
     private $type;
     private $bits;
     private $text;
 
-    public function __construct(string $text, string $key = null)
+    public function __construct(string $text, string $passphrase = '')
     {
+        $this->resource = openssl_pkey_get_private($text, $passphrase);
+        if ($this->resource === false) {
+            throw new PemException();
+        }
+        $this->text = $text;
+        $keyData = openssl_pkey_get_details($this->resource);
+        if ($keyData === false) {
+            throw new PemException();
+        }
+        $this->bits = $keyData['bits'];
+        $this->type = $keyData['type'];
+    }
+
+    public function toString()
+    {
+        return $this->text;
+    }
+
+    /**
+     * @return resource
+     */
+    public function getResource()
+    {
+        return $this->resource;
+    }
+
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    public function getBits(): int
+    {
+        return $this->bits;
     }
 
 }
