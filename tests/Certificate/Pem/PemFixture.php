@@ -3,8 +3,9 @@
 namespace NiceCrypto\Tests\Certificate\Pem;
 
 use NiceCrypto\Certificate\Pem\PrivateKey;
+use NiceCrypto\Certificate\Pem\PublicKey;
 
-class PrivateKeyFixture
+class PemFixture
 {
     public static function getPrivateKey()
     {
@@ -24,6 +25,16 @@ oSVkeX2wxpWFWs2MddmLV5mEl9n3Uk9638K/RsV8u2TQRY37m3QtnbUCQQCUFtwf
 IhyooJmSq7YqxUiBJl911NY57GCGN3PXRR+yZGrNFnLRHSbk/ZPlpEdqHbH9y4CH
 ltIgMeKu5Dj5i3mb
 -----END PRIVATE KEY-----');
+    }
+
+    public static function getPublicKey()
+    {
+        return new PublicKey('-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDkS5FmZGhWEkmf+pPcBlRx4Z9G
+3mQCDcU93tINYMPhf0J+Q1RkiMSgWLoUeH1b2Oe+D4vPJLnwqcicPk3sjnvZhx6h
+31/eWU/hjhRK9BZO3DcArV3ggElA+yhVCN+M80d+Px9ZctPRxOtWqEWIYxaoCPyT
+mYiNqToclVEZXoG0tQIDAQAB
+-----END PUBLIC KEY-----');
     }
 
 }
