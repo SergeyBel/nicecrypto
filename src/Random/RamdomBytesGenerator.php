@@ -2,11 +2,20 @@
 
 namespace NiceCrypto\Random;
 
+use NiceCrypto\Encoder\EncoderInterface;
+use NiceCrypto\Encoder\Hex;
 use NiceCrypto\Exception\ArgumentException;
 use NiceCrypto\Exception\GenerateException;
 
-class RandomGenerator
+class RamdomBytesGenerator
 {
+    private $encoder;
+
+    public function __construct()
+    {
+        $this->encoder = new Hex();
+    }
+
     public function generateRandomBytes(int $bytesLength)
     {
         $key = openssl_random_pseudo_bytes($bytesLength, $strongCrypto);
@@ -19,7 +28,13 @@ class RandomGenerator
             throw new GenerateException();
         }
 
-        return bin2hex($key);
+        return $this->encoder->encode($key);
+    }
+
+    public function setEncoder(EncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+        return $this;
     }
 }
 
