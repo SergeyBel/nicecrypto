@@ -23,7 +23,7 @@ class GeneratePrivateTest extends TestCase
         $options = new GenerateOptions();
         $options->setBits(2048);
         $g = new PemGenerator();
-        $privateKey = $g->generatePrivateKey($options);
+        $privateKey = $g->generatePrivateKey('', $options);
         $this->assertEquals(2048, $privateKey->getBits());
     }
 
@@ -32,7 +32,15 @@ class GeneratePrivateTest extends TestCase
         $options = new GenerateOptions();
         $options->setType(PrivateKeyTypes::KEYTYPE_RSA);
         $g = new PemGenerator();
-        $privateKey = $g->generatePrivateKey($options);
+        $privateKey = $g->generatePrivateKey('', $options);
         $this->assertEquals(PrivateKeyTypes::KEYTYPE_RSA, $privateKey->getType());
+    }
+
+    public function testPassphrase()
+    {
+        $pass = '123456';
+        $g = new PemGenerator();
+        $privateKey = $g->generatePrivateKey($pass);
+        $this->assertInstanceOf(PrivateKey::class, $privateKey);
     }
 }
