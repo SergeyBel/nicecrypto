@@ -1,4 +1,11 @@
 {
+    "name": "SergeyBel/nicecrypto",
+    "description": "Nice crypto package",
+    "authors": [
+        {
+            "name": "Sergey Belov"
+        }
+    ],
     "autoload": {
         "psr-4": {
 		"NiceCrypto\\": "./src",
