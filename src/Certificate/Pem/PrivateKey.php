@@ -50,4 +50,10 @@ class PrivateKey implements KeyInterface
         return $this->bits;
     }
 
+    public function __destruct()
+    {
+        if ($this->resource !== null) {
+            openssl_free_key($this->resource);
+        }
+    }
 }

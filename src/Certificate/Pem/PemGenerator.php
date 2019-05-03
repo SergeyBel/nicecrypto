@@ -7,7 +7,7 @@ use NiceCrypto\Exception\GenerateException;
 
 class PemGenerator
 {
-    public function generatePrivateKey(GenerateOptions $options = null): PrivateKey
+    public function generatePrivateKey(string $passphrase = '', GenerateOptions $options = null): PrivateKey
     {
         if ($options) {
             $config = $options->toArray();
@@ -22,11 +22,11 @@ class PemGenerator
         }
 
 
-        if (openssl_pkey_export($resource, $pemText) === false) {
+        if (openssl_pkey_export($resource, $pemText, $passphrase) === false) {
             throw new GenerateException();
         }
 
-        return new PrivateKey($pemText);
+        return new PrivateKey($pemText, $passphrase);
     }
 
     public function generatePublicKey(PrivateKey $privateKey): PublicKey
