@@ -6,6 +6,7 @@ namespace NiceCrypto\Tests\Certificate\Pem;
 use NiceCrypto\Certificate\GenerateOptions;
 use NiceCrypto\Certificate\PrivateKeyTypes;
 use NiceCrypto\Certificate\Pem\PrivateKey;
+use NiceCrypto\Hash\HashAlgorithms;
 use PHPUnit\Framework\TestCase;
 use NiceCrypto\Certificate\Pem\PemGenerator;
 
@@ -21,7 +22,7 @@ class GeneratePrivateTest extends TestCase
     public function testBitsLength()
     {
         $options = new GenerateOptions();
-        $options->setBits(2048);
+        $options->setBits(2048)->setDigestAlgo(HashAlgorithms::SHA256);
         $g = new PemGenerator();
         $privateKey = $g->generatePrivateKey('', $options);
         $this->assertEquals(2048, $privateKey->getBits());
@@ -30,7 +31,7 @@ class GeneratePrivateTest extends TestCase
     public function testKeyType()
     {
         $options = new GenerateOptions();
-        $options->setType(PrivateKeyTypes::KEYTYPE_RSA);
+        $options->setType(PrivateKeyTypes::KEYTYPE_RSA)->setDigestAlgo(HashAlgorithms::SHA256);
         $g = new PemGenerator();
         $privateKey = $g->generatePrivateKey('', $options);
         $this->assertEquals(PrivateKeyTypes::KEYTYPE_RSA, $privateKey->getType());
