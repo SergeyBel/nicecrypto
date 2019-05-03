@@ -77,12 +77,17 @@ eWlnvv2ZE2muiFA/K/k5EA==
 
     public static function getPublicKey()
     {
-        return new PublicKey('-----BEGIN PUBLIC KEY-----
+        return new PublicKey(PemFixture::getPublicKeyText());
+    }
+
+    public static function getPublicKeyText()
+    {
+        return '-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDkS5FmZGhWEkmf+pPcBlRx4Z9G
 3mQCDcU93tINYMPhf0J+Q1RkiMSgWLoUeH1b2Oe+D4vPJLnwqcicPk3sjnvZhx6h
 31/eWU/hjhRK9BZO3DcArV3ggElA+yhVCN+M80d+Px9ZctPRxOtWqEWIYxaoCPyT
 mYiNqToclVEZXoG0tQIDAQAB
------END PUBLIC KEY-----');
+-----END PUBLIC KEY-----';
     }
 
 }
