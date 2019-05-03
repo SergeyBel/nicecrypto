@@ -7,6 +7,7 @@ class GenerateOptions
     private $digestAlgo;
     private $bits;
     private $type;
+    private $passphrase;
     private $data;
 
     public function toArray()
@@ -42,5 +43,17 @@ class GenerateOptions
         $this->type = $type;
         return $this;
     }
+    public function getPassphrase(): ?string
+    {
+        return $this->passphrase;
+    }
+
+    public function setPassphrase(string $passphrase)
+    {
+        $this->passphrase = $passphrase;
+        return $this;
+    }
+
+
 }
 
