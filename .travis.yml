@@ -5,6 +5,7 @@ php:
   - 7.2
 
 before_script:
+  - cat /etc/ssl/openssl.cnf
   - composer install
   
 script: vendor/bin/phpunit tests --colors --coverage-clover=coverage.xml
