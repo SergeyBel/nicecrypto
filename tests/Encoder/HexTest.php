@@ -3,6 +3,7 @@
 namespace NiceCrypto\Tests\Encoder;
 
 use NiceCrypto\Encoder\Hex;
+use NiceCrypto\Exception\EncodeException;
 use PHPUnit\Framework\TestCase;
 
 class HexTest extends TestCase
@@ -19,5 +20,13 @@ class HexTest extends TestCase
         $data = '31323334';
         $enc = new Hex();
         $this->assertEquals('1234', $enc->decode($data));
+    }
+
+    public function testDecodeIncorrect()
+    {
+        $data = 'not hex';
+        $enc = new Hex();
+        $this->expectException(EncodeException::class);
+        $enc->decode($data);
     }
 }
