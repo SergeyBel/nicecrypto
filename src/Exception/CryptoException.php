@@ -11,5 +11,4 @@ class CryptoException extends \Exception
         $message = openssl_error_string();
         parent::__construct($message);
     }
-
 }

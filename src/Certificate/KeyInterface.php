@@ -3,7 +3,6 @@
 
 namespace NiceCrypto\Certificate;
 
-
 interface KeyInterface
 {
     public function getResource();

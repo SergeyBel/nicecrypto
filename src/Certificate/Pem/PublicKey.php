@@ -28,5 +28,4 @@ class PublicKey implements PublicKeyInterface
     {
         return $this->text;
     }
-
 }

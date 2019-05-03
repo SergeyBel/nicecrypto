@@ -37,4 +37,3 @@ class RamdomBytesGenerator
         return $this;
     }
 }
-

@@ -10,11 +10,9 @@ class CsrGenerator
 {
     public function generateCsr(CsrInfo $dn, PrivateKey $privateKey, GenerateOptions $options = null): Csr
     {
-
     }
 
     public function generatePublicCsr(Csr $csr): CsrPublic
     {
-
     }
 }
