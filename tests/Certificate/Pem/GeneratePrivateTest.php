@@ -43,4 +43,18 @@ class GeneratePrivateTest extends TestCase
         $privateKey = $g->generatePrivateKey($pass);
         $this->assertInstanceOf(PrivateKey::class, $privateKey);
     }
+
+    public function testGenerateNotEncrytedKey()
+    {
+        $g = new PemGenerator();
+        $privateKey = $g->generatePrivateKey();
+        $this->assertContains('BEGIN PRIVATE KEY', $privateKey->toString());
+    }
+
+    public function testGenerateEncrytedKey()
+    {
+        $g = new PemGenerator();
+        $privateKey = $g->generatePrivateKey('password');
+        $this->assertContains('BEGIN ENCRYPTED PRIVATE KEY', $privateKey->toString());
+    }
 }

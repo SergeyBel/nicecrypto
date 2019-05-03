@@ -12,9 +12,15 @@ class PrivateKey implements KeyInterface
     private $bits;
     private $text;
 
-    public function __construct(string $text, string $passphrase = '')
+    public function __construct(string $text, string $passphrase = null)
     {
-        $this->resource = openssl_pkey_get_private($text, $passphrase);
+        if ($passphrase !== null) {
+            $this->resource = openssl_pkey_get_private($text, $passphrase);
+        }
+        else {
+            $this->resource = openssl_pkey_get_private($text);
+        }
+
         if ($this->resource === false) {
             throw new PemException();
         }
