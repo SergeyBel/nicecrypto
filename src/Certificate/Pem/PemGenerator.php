@@ -12,8 +12,7 @@ class PemGenerator
         if ($options) {
             $config = $options->toArray();
             $resource = openssl_pkey_new($config);
-        }
-        else {
+        } else {
             $resource = openssl_pkey_new();
         }
 
@@ -25,8 +24,7 @@ class PemGenerator
 
         if ($passphrase !== null) {
             $keyData = openssl_pkey_export($resource, $pemText, $passphrase);
-        }
-        else {
+        } else {
             $keyData = openssl_pkey_export($resource, $pemText);
         }
 
@@ -43,5 +41,4 @@ class PemGenerator
         $privateKeyData = openssl_pkey_get_details($privateKey->getResource());
         return new PublicKey($privateKeyData['key']);
     }
-
 }

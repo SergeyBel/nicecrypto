@@ -16,8 +16,7 @@ class PrivateKey implements KeyInterface
     {
         if ($passphrase !== null) {
             $this->resource = openssl_pkey_get_private($text, $passphrase);
-        }
-        else {
+        } else {
             $this->resource = openssl_pkey_get_private($text);
         }
 

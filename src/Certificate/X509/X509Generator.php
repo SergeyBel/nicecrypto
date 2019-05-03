@@ -9,6 +9,5 @@ class X509Generator
 {
     public function generateX509(Csr $csr, PrivateKey $privateKey): X509
     {
-
     }
 }

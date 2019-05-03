@@ -53,7 +53,4 @@ class GenerateOptions
         $this->passphrase = $passphrase;
         return $this;
     }
-
-
 }
-

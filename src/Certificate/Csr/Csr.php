@@ -8,5 +8,4 @@ class Csr
     private $type;
     private $bits;
     private $text;
-
 }
