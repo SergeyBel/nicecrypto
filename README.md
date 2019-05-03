@@ -1,7 +1,7 @@
 # NiceCrypto
 NiceCrypto is a simple and powerful crypto library written in  php based on openssl extension
 
-#Keys
+# Keys
 Use `PrivateKey` and `PublicKey` classes to work with keys pairs;
 ```php
 $yourPrivateKey = '-----BEGIN ENCRYPTED PRIVATE KEY...';
@@ -36,7 +36,7 @@ $generator = new PemGenerator();
 $privateKey = $generator->generatePrivateKey($passphrase, $options);
 $publicKey = $generator->generatePublicKey($privateKey);
 ```
-#Ciphers
+# Ciphers
 
 `Cipher` class is used for symmetric encryption\decryption (AES for example)
 
@@ -58,7 +58,7 @@ $iv = $generator->generateRandomBytes($cipher->getIvBytesLength());
 // encrypt\decrypt using key and iv
 
 ```
-#Hash
+# Hash
 
 `Hash` class is used for calculate cryptographic hash functions 
 ```php
@@ -67,7 +67,7 @@ $text = 'The quick brown fox jumps over the lazy dog';
 $h = $h->hash($text); //'d7a8fbb307d7809469ca9abcb0082e4f8d5651e46d3cdb762d02d0bf37c9e592'
 ```
 
-#Signature
+# Signature
 
 `Signature` is used for sign and verify cryptographic signatures
 
