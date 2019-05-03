@@ -7,4 +7,4 @@ php:
 before_script:
   - composer install
   
-script: ./venod/bin/phpunit tests --colors
+script: vendor/bin/phpunit tests --colors
