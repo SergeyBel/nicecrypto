@@ -2,7 +2,7 @@
 
 namespace NiceCrypto\Certificate;
 
-class KeyTypeEnum
+class PrivateKeyTypes
 {
     const KEYTYPE_DSA = OPENSSL_KEYTYPE_DSA;
     const KEYTYPE_DH = OPENSSL_KEYTYPE_DH;

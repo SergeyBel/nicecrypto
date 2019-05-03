@@ -4,7 +4,7 @@ namespace NiceCrypto\Tests\Certificate\Pem;
 
 
 use NiceCrypto\Certificate\GenerateOptions;
-use NiceCrypto\Certificate\KeyTypeEnum;
+use NiceCrypto\Certificate\PrivateKeyTypes;
 use NiceCrypto\Certificate\Pem\PrivateKey;
 use PHPUnit\Framework\TestCase;
 use NiceCrypto\Certificate\Pem\PemGenerator;
@@ -30,9 +30,9 @@ class GeneratePrivateTest extends TestCase
     public function testKeyType()
     {
         $options = new GenerateOptions();
-        $options->setType(KeyTypeEnum::KEYTYPE_RSA);
+        $options->setType(PrivateKeyTypes::KEYTYPE_RSA);
         $g = new PemGenerator();
         $privateKey = $g->generatePrivateKey($options);
-        $this->assertEquals(KeyTypeEnum::KEYTYPE_RSA, $privateKey->getType());
+        $this->assertEquals(PrivateKeyTypes::KEYTYPE_RSA, $privateKey->getType());
     }
 }
