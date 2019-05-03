@@ -1,6 +1,8 @@
 # NiceCrypto
 NiceCrypto is a simple and powerful crypto library written in  php based on openssl extension
 
+# Installation
+`composer require sergey-bel/nicecrypto`
 # Keys
 Use `PrivateKey` and `PublicKey` classes to work with keys pairs;
 ```php
