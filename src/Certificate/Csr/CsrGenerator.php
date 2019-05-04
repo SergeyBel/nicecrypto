@@ -13,8 +13,7 @@ class CsrGenerator
         $privateKeyResource = $privateKey->getResource();
         if ($options === null) {
             $resource = openssl_csr_new($dn->toArray(), $privateKeyResource);
-        }
-        else {
+        } else {
             $resource = openssl_csr_new($dn->toArray(), $privateKeyResource, $options->toArray());
         }
 
