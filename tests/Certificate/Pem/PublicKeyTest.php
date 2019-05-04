@@ -13,7 +13,7 @@ class PublicKeyTest extends TestCase
         $text = PemFixture::getPublicKeyText();
         $publicKey = new PublicKey($text);
         $this->assertInstanceOf(PublicKey::class, $publicKey);
-        $this->assertEquals($text, $publicKey->toString());
+        $this->assertEquals($text, $publicKey->getAsString());
     }
 
     public function testIncorrectText()

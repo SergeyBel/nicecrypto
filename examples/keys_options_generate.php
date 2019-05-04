@@ -13,5 +13,5 @@ $generator = new PemGenerator();
 
 $privateKey = $generator->generatePrivateKey($options);
 $publicKey = $generator->generatePublicKey($privateKey);
-file_put_contents('private.pem', $privateKey->toString());
-file_put_contents('public.pem', $publicKey->toString());
+file_put_contents('private.pem', $privateKey->getAsString());
+file_put_contents('public.pem', $publicKey->getAsString());

@@ -24,7 +24,7 @@ class PublicKey implements PublicKeyInterface
         return $this->resource;
     }
 
-    public function toString()
+    public function getAsString(): string
     {
         return $this->text;
     }

@@ -50,7 +50,7 @@ class GeneratePrivateTest extends TestCase
     {
         $g = new PemGenerator();
         $privateKey = $g->generatePrivateKey();
-        $this->assertContains('BEGIN PRIVATE KEY', $privateKey->toString());
+        $this->assertContains('BEGIN PRIVATE KEY', $privateKey->getAsString());
     }
 
     public function testGenerateEncrytedKey()
@@ -59,6 +59,6 @@ class GeneratePrivateTest extends TestCase
         $opts = new GenerateOptions();
         $opts->setPassphrase('password');
         $privateKey = $g->generatePrivateKey($opts);
-        $this->assertContains('BEGIN ENCRYPTED PRIVATE KEY', $privateKey->toString());
+        $this->assertContains('BEGIN ENCRYPTED PRIVATE KEY', $privateKey->getAsString());
     }
 }
