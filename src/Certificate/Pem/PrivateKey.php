@@ -32,7 +32,7 @@ class PrivateKey implements KeyInterface
         $this->type = $keyData['type'];
     }
 
-    public function toString()
+    public function getAsString(): string
     {
         return $this->text;
     }

@@ -14,7 +14,7 @@ class PrivateKeyTest extends TestCase
         $text = PemFixture::getPrivateKeyText();
         $privateKey = new PrivateKey($text);
         $this->assertInstanceOf(PrivateKey::class, $privateKey);
-        $this->assertEquals($text, $privateKey->toString());
+        $this->assertEquals($text, $privateKey->getAsString());
     }
 
     public function testIncorrectText()
@@ -30,7 +30,7 @@ class PrivateKeyTest extends TestCase
         $pass = PemFixture::PASSPHRASE;
         $privateKey = new PrivateKey($text, $pass);
         $this->assertInstanceOf(PrivateKey::class, $privateKey);
-        $this->assertEquals($text, $privateKey->toString());
+        $this->assertEquals($text, $privateKey->getAsString());
     }
 
     public function testIncorrectPass()
@@ -46,7 +46,7 @@ class PrivateKeyTest extends TestCase
         $text = PemFixture::getPrivateKeyText();
         $privateKey = new PrivateKey($text);
         $this->assertInstanceOf(PrivateKey::class, $privateKey);
-        $this->assertEquals($text, $privateKey->toString());
+        $this->assertEquals($text, $privateKey->getAsString());
         $this->assertEquals(PemFixture::BITS, $privateKey->getBits());
         $this->assertEquals(PemFixture::TYPE, $privateKey->getType());
     }
