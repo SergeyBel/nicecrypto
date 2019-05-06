@@ -12,9 +12,8 @@ class X509Generator
     public function generateX509(Csr $csr, PrivateKey $privateKey, string $cacert = null, int $days = 365, GenerateOptions $options = null): X509
     {
         if ($options === null) {
-           $x509 =  openssl_csr_sign($csr->getAsString(), $cacert, $privateKey->getResource(), $days);
-        }
-        else {
+            $x509 =  openssl_csr_sign($csr->getAsString(), $cacert, $privateKey->getResource(), $days);
+        } else {
             $x509 = openssl_csr_sign($csr->getAsString(), $cacert, $privateKey->getResource(), $days, $options->toArray());
         }
 
