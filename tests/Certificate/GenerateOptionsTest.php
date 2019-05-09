@@ -3,15 +3,15 @@
 namespace NiceCrypto\Tests\Certificate;
 
 use NiceCrypto\Certificate\GenerateOptions;
-use NiceCrypto\Certificate\PrivateKeyTypes;
-use NiceCrypto\Hash\HashAlgorithms;
+use NiceCrypto\Certificate\PrivateKeyType;
+use NiceCrypto\Hash\HashAlgorithm;
 use PHPUnit\Framework\TestCase;
 
 class GenerateOptionsTest extends TestCase
 {
     public function testDigestAlgo()
     {
-        $algo = HashAlgorithms::SHA256;
+        $algo = HashAlgorithm::SHA256;
         $opts = new GenerateOptions();
         $opts->setDigestAlgo($algo);
         $this->assertEquals($opts->toArray(), ['digest_alg' => $algo]);
@@ -27,7 +27,7 @@ class GenerateOptionsTest extends TestCase
 
     public function testKeyType()
     {
-        $type = PrivateKeyTypes::KEYTYPE_DSA;
+        $type = PrivateKeyType::KEYTYPE_DSA;
         $opts = new GenerateOptions();
         $opts->setType($type);
         $this->assertEquals($opts->toArray(), ['private_key_type' => $type]);

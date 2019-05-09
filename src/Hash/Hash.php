@@ -4,6 +4,11 @@ namespace NiceCrypto\Hash;
 
 use NiceCrypto\Exception\HashException;
 
+/**
+ * Class Hash
+ *
+ * @package NiceCrypto\Hash
+ */
 class Hash
 {
     private $algorithm;
@@ -13,6 +18,12 @@ class Hash
         $this->algorithm = $algorithm;
     }
 
+    /**
+     * @param string $text
+     *
+     * @return string
+     * @throws \NiceCrypto\Exception\HashException
+     */
     public function hash(string $text)
     {
         $hash = openssl_digest($text, $this->algorithm);
@@ -22,11 +33,19 @@ class Hash
         return $hash;
     }
 
+    /**
+     * @return string
+     */
     public function getAlgorithm(): string
     {
         return $this->algorithm;
     }
 
+    /**
+     * @param string $algorithm
+     *
+     * @return $this
+     */
     public function setAlgorithm(string $algorithm)
     {
         $this->algorithm = $algorithm;

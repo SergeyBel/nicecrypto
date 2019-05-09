@@ -9,6 +9,11 @@ use NiceCrypto\Encoder\Hex;
 use NiceCrypto\Exception\SignatureException;
 use NiceCrypto\Hash\Hash;
 
+/**
+ * Class Signature
+ *
+ * @package NiceCrypto\Signature
+ */
 class Signature
 {
     private $hash;
@@ -20,6 +25,14 @@ class Signature
         $this->encoder = new Hex();
     }
 
+    /**
+     * Sign data
+     * @param string                                 $data
+     * @param \NiceCrypto\Certificate\Pem\PrivateKey $privateKey
+     *
+     * @return string
+     * @throws \NiceCrypto\Exception\SignatureException
+     */
     public function sign(string $data, PrivateKey $privateKey)
     {
         openssl_sign($data, $signature, $privateKey->getResource(), $this->hash->getAlgorithm());
@@ -29,6 +42,16 @@ class Signature
         return $this->encoder->encode($signature);
     }
 
+    /**
+     * Verify data signature
+     * @param string                                     $data
+     * @param string                                     $signature
+     * @param \NiceCrypto\Certificate\PublicKeyInterface $publicKey
+     *
+     * @return bool
+     * @throws \NiceCrypto\Exception\EncodeException
+     * @throws \NiceCrypto\Exception\SignatureException
+     */
     public function verify(string $data, string $signature, PublicKeyInterface $publicKey)
     {
         $decodedSignature = $this->encoder->decode($signature);
@@ -40,6 +63,11 @@ class Signature
         return (bool)$verify;
     }
 
+    /**
+     * @param \NiceCrypto\Encoder\EncoderInterface $encoder
+     *
+     * @return $this
+     */
     public function setEncoder(EncoderInterface $encoder)
     {
         $this->encoder = $encoder;

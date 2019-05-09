@@ -5,6 +5,11 @@ namespace NiceCrypto\Certificate\Pem;
 use NiceCrypto\Certificate\KeyInterface;
 use NiceCrypto\Exception\PemException;
 
+/**
+ * Class PrivateKey
+ *
+ * @package NiceCrypto\Certificate\Pem
+ */
 class PrivateKey implements KeyInterface
 {
     private $resource;
@@ -32,6 +37,9 @@ class PrivateKey implements KeyInterface
         $this->type = $keyData['type'];
     }
 
+    /**
+     * @return string
+     */
     public function getAsString(): string
     {
         return $this->text;
@@ -45,11 +53,17 @@ class PrivateKey implements KeyInterface
         return $this->resource;
     }
 
+    /**
+     * @return int
+     */
     public function getType(): int
     {
         return $this->type;
     }
 
+    /**
+     * @return int
+     */
     public function getBits(): int
     {
         return $this->bits;

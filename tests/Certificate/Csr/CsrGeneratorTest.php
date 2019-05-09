@@ -5,8 +5,8 @@ namespace NiceCrypto\Tests\Certificate\Csr;
 use NiceCrypto\Certificate\Csr\Csr;
 use NiceCrypto\Certificate\Csr\CsrGenerator;
 use NiceCrypto\Certificate\GenerateOptions;
-use NiceCrypto\Certificate\PrivateKeyTypes;
-use NiceCrypto\Hash\HashAlgorithms;
+use NiceCrypto\Certificate\PrivateKeyType;
+use NiceCrypto\Hash\HashAlgorithm;
 use NiceCrypto\Tests\Certificate\Pem\PemFixture;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +28,7 @@ class CsrGeneratorTest extends TestCase
         $privateKey = PemFixture::getPrivateKey();
         $dn = CsrFixture::getCsrInfo();
         $opts = new GenerateOptions();
-        $opts->setDigestAlgo(HashAlgorithms::SHA512);
+        $opts->setDigestAlgo(HashAlgorithm::SHA512);
         $csr = $generator->generateCsr($dn, $privateKey, $opts);
         $this->assertInstanceOf(Csr::class, $csr);
         $this->assertContains('-----BEGIN CERTIFICATE REQUEST-----', $csr->getAsString());
