@@ -5,8 +5,21 @@ namespace NiceCrypto\Certificate\Pem;
 use NiceCrypto\Certificate\GenerateOptions;
 use NiceCrypto\Exception\GenerateException;
 
+/**
+ * Class PemGenerator
+ *
+ * @package NiceCrypto\Certificate\Pem
+ */
 class PemGenerator
 {
+    /**
+     * Generate new private key
+     * @param \NiceCrypto\Certificate\GenerateOptions|null $options
+     *
+     * @return \NiceCrypto\Certificate\Pem\PrivateKey
+     * @throws \NiceCrypto\Exception\GenerateException
+     * @throws \NiceCrypto\Exception\PemException
+     */
     public function generatePrivateKey(GenerateOptions $options = null): PrivateKey
     {
         if ($options) {
@@ -36,6 +49,13 @@ class PemGenerator
         return new PrivateKey($pemText, $passphrase);
     }
 
+    /**
+     * Generate public key from private key
+     * @param \NiceCrypto\Certificate\Pem\PrivateKey $privateKey
+     *
+     * @return \NiceCrypto\Certificate\Pem\PublicKey
+     * @throws \NiceCrypto\Exception\PemException
+     */
     public function generatePublicKey(PrivateKey $privateKey): PublicKey
     {
         $privateKeyData = openssl_pkey_get_details($privateKey->getResource());

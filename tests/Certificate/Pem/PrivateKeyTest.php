@@ -3,7 +3,7 @@
 namespace NiceCrypto\Tests\Certificate\Pem;
 
 use NiceCrypto\Certificate\Pem\PrivateKey;
-use NiceCrypto\Certificate\PrivateKeyTypes;
+use NiceCrypto\Certificate\PrivateKeyType;
 use NiceCrypto\Exception\PemException;
 use PHPUnit\Framework\TestCase;
 

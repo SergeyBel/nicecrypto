@@ -7,7 +7,12 @@ use NiceCrypto\Encoder\Hex;
 use NiceCrypto\Exception\ArgumentException;
 use NiceCrypto\Exception\GenerateException;
 
-class RamdomBytesGenerator
+/**
+ * Class RandomBytesGenerator
+ *
+ * @package NiceCrypto\Random
+ */
+class RandomBytesGenerator
 {
     private $encoder;
 
@@ -16,6 +21,13 @@ class RamdomBytesGenerator
         $this->encoder = new Hex();
     }
 
+    /**
+     * @param int $bytesLength
+     *
+     * @return string
+     * @throws \NiceCrypto\Exception\ArgumentException
+     * @throws \NiceCrypto\Exception\GenerateException
+     */
     public function generateRandomBytes(int $bytesLength)
     {
         $key = openssl_random_pseudo_bytes($bytesLength, $strongCrypto);
@@ -31,6 +43,11 @@ class RamdomBytesGenerator
         return $this->encoder->encode($key);
     }
 
+    /**
+     * @param \NiceCrypto\Encoder\EncoderInterface $encoder
+     *
+     * @return $this
+     */
     public function setEncoder(EncoderInterface $encoder)
     {
         $this->encoder = $encoder;

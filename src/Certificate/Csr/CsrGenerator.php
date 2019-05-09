@@ -6,8 +6,22 @@ use NiceCrypto\Certificate\GenerateOptions;
 use NiceCrypto\Certificate\Pem\PrivateKey;
 use NiceCrypto\Exception\CsrException;
 
+/**
+ * Class CsrGenerator
+ *
+ * @package NiceCrypto\Certificate\Csr
+ */
 class CsrGenerator
 {
+    /**
+     * Generate new csr certificate
+     * @param \NiceCrypto\Certificate\Csr\CsrInfo          $dn
+     * @param \NiceCrypto\Certificate\Pem\PrivateKey       $privateKey
+     * @param \NiceCrypto\Certificate\GenerateOptions|null $options
+     *
+     * @return \NiceCrypto\Certificate\Csr\Csr
+     * @throws \NiceCrypto\Exception\CsrException
+     */
     public function generateCsr(CsrInfo $dn, PrivateKey $privateKey, GenerateOptions $options = null): Csr
     {
         $privateKeyResource = $privateKey->getResource();

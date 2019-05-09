@@ -5,6 +5,11 @@ namespace NiceCrypto\Certificate\X509;
 use NiceCrypto\Certificate\PublicKeyInterface;
 use NiceCrypto\Exception\X509Exception;
 
+/**
+ * Class X509
+ *
+ * @package NiceCrypto\Certificate\X509
+ */
 class X509 implements PublicKeyInterface
 {
     private $text;
@@ -20,11 +25,18 @@ class X509 implements PublicKeyInterface
         $this->text = $text;
     }
 
+    /**
+     * @return resource
+     */
     public function getResource()
     {
         return $this->resource;
     }
 
+    /**
+     * @return string
+     * @throws \NiceCrypto\Exception\X509Exception
+     */
     public function getAsString(): string
     {
         if (openssl_x509_export($this->resource, $text) === false) {

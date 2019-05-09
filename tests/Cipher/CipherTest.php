@@ -3,8 +3,8 @@
 namespace NiceCrypto\Tests\Cipher;
 
 use NiceCrypto\Cipher\Cipher;
-use NiceCrypto\Cipher\CipherAlgotithms;
-use NiceCrypto\Cipher\CipherModes;
+use NiceCrypto\Cipher\CipherAlgotithm;
+use NiceCrypto\Cipher\CipherMode;
 use PHPUnit\Framework\TestCase;
 
 class CipherTest extends TestCase
@@ -15,7 +15,7 @@ class CipherTest extends TestCase
         $iv =  'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
         $m = 'some string';
         $c = '596864655a4f71315a357164353045734566676d35513d3d';
-        $cipher = new Cipher(CipherAlgotithms::AES256, CipherModes::CBC);
+        $cipher = new Cipher(CipherAlgotithm::AES256, CipherMode::CBC);
         $this->assertEquals($c, $cipher->encrypt($m, $key, $iv));
     }
 
@@ -25,7 +25,7 @@ class CipherTest extends TestCase
         $iv =  'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
         $m = 'some string';
         $c = '596864655a4f71315a357164353045734566676d35513d3d';
-        $cipher = new Cipher(CipherAlgotithms::AES256, CipherModes::CBC);
+        $cipher = new Cipher(CipherAlgotithm::AES256, CipherMode::CBC);
         $this->assertEquals($m, $cipher->decrypt($c, $key, $iv));
     }
 
@@ -35,13 +35,13 @@ class CipherTest extends TestCase
         $data = 'new message';
         $key = 'ffffffffffffffffffffffffffffffff';
         $iv =  'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
-        $c = new Cipher(CipherAlgotithms::AES256, CipherModes::CBC);
+        $c = new Cipher(CipherAlgotithm::AES256, CipherMode::CBC);
         $this->assertEquals($data, $c->decrypt($c->encrypt($data, $key, $iv), $key, $iv));
     }
 
     public function testGetIvLength()
     {
-        $cipher = new Cipher(CipherAlgotithms::AES256, CipherModes::CBC);
+        $cipher = new Cipher(CipherAlgotithm::AES256, CipherMode::CBC);
         $this->assertEquals(16, $cipher->getIvBytesLength());
     }
 }
